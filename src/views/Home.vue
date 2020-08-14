@@ -330,7 +330,9 @@
                         dateOfIssue: this.dateOfIssue
                     }
                     console.log(data)
+
                     this.refreshInputs()
+                    this.$v.$invalid = false
                 }
             },
             refreshInputs() {
