@@ -1,6 +1,6 @@
 <template>
     <div class="home">
-        <h3 class="home__title">1. Сверстать форму создания Клиента</h3>
+        <h3 class="home__title">Форма Клиента</h3>
         <div class="wrapper">
 
             <div class="row">
@@ -35,7 +35,7 @@
                         <div class="input-field "> <!--DateOfBirth-->
                             <input id="dateOfBirth" type="text" ref="dateOfBirth" class="datepicker"
                                    @change="setDateOfBirth"
-                                   :class="{invalid: (this.$v.dateOfBirth.$dirty && !this.$v.dateOfBirth.required )}">
+                                   :class="{invalid: (this.$v.dateOfBirth.$dirty && !this.$v.dateOfBirth.required )}" :value="dateOfBirth">
                             <label for="dateOfBirth">Дата рождения*</label>
                             <small v-if="(this.$v.dateOfBirth.$dirty && !this.$v.dateOfBirth.required)"
                                    class="helper-text invalid"
@@ -183,7 +183,7 @@
 
                         <div class="input-field ">
                             <input id="dateOfIssue" type="text" class="datepicker"
-                                   ref="dateOfIssue" @change="setDateOfIssue"
+                                   ref="dateOfIssue" @change="setDateOfIssue" :value="dateOfIssue"
                                    :class="{invalid: this.$v.dateOfIssue.$dirty && !this.$v.dateOfIssue.required}">
 
                             <label for="dateOfIssue">Дата выдачи*</label>
@@ -330,7 +330,30 @@
                         dateOfIssue: this.dateOfIssue
                     }
                     console.log(data)
+                    this.refreshInputs()
                 }
+            },
+            refreshInputs() {
+                    this.first_name = '',
+                    this.last_name = '',
+                    this.patronymic = '',
+                    this.dateOfBirth = "",
+                    this.phone = '',
+                    this.sex = '',
+                    this.customerGroup = [],
+                    this.doctor = '',
+                    this.sendSms = false,
+                    this.index = '',
+                    this.country = '',
+                    this.region = '',
+                    this.city = '',
+                    this.street = '',
+                    this.house = '',
+                    this.documentType = '',
+                    this.series = '',
+                    this.number = '',
+                    this.issuedBy = '',
+                    this.dateOfIssue = ''
             }
         },
         mounted() {
@@ -378,14 +401,14 @@
     .home {
         .home__title {
             max-width: 800px;
-            margin: 0 auto;
+            margin: 25px auto 0;
             text-align: center;
         }
 
         .wrapper {
             width: 80%;
             max-width: 400px;
-            margin: 100px auto;
+            margin: 40px auto;
         }
 
         button {
